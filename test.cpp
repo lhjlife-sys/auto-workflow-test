@@ -1,6 +1,8 @@
 #include <iostream>
+#include <cstdlib>
 
 int main() {
+
     int num;
     std::cout << "请输入一个整数: ";
     std::cin >> num;
@@ -13,4 +15,3 @@ int main() {
 
     return 0;
 }
-

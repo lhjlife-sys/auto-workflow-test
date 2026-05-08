@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install g++
+      run: sudo apt update && sudo apt install -y g++
+
+    - name: Compile test.cpp
+      run: g++ test.cpp -o test
+
+    - name: Compile leap_year.cpp
+      run: g++ leap_year.cpp -o leap_year
+
+    - name: Test test.cpp (odd/even)
+      run: |
+        echo "4" | ./test | grep -q "偶数"
+        echo "7" | ./test | grep -q "奇数"
+
+    - name: Test leap_year.cpp
+      run: |
+        echo "2000" | ./leap_year | grep -q "是闰年"
+        echo "1900" | ./leap_year | grep -q "不是闰年"
+        echo "2024" | ./leap_year | grep -q "是闰年"
+        echo "2025" | ./leap_year | grep -q "不是闰年"
