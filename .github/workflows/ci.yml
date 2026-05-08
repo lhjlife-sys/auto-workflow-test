@@ -16,16 +16,17 @@ jobs:
     - name: Install g++
       run: sudo apt update && sudo apt install -y g++
 
-    - name: Compile test.cpp
-      run: g++ test.cpp -o test
-
     - name: Compile leap_year.cpp
       run: g++ leap_year.cpp -o leap_year
 
-    - name: Test test.cpp (odd/even)
-      run: |
-        echo "4" | ./test | grep -q "偶数"
-        echo "7" | ./test | grep -q "奇数"
+    - name: Compile add.cpp
+      run: g++ add.cpp -o add
+
+    - name: Compile hello.cpp
+      run: g++ hello.cpp -o hello
+
+    - name: Compile mul.cpp
+      run: g++ mul.cpp -o mul
 
     - name: Test leap_year.cpp
       run: |
@@ -33,3 +34,15 @@ jobs:
         echo "1900" | ./leap_year | grep -q "不是闰年"
         echo "2024" | ./leap_year | grep -q "是闰年"
         echo "2025" | ./leap_year | grep -q "不是闰年"
+
+    - name: Test add.cpp
+      run: |
+        echo "3 5" | ./add | grep -q "3 + 5 = 8"
+
+    - name: Test hello.cpp
+      run: |
+        ./hello | grep -q "Hello World"
+
+    - name: Test mul.cpp
+      run: |
+        echo "4 7" | ./mul | grep -q "4 * 7 = 28"
