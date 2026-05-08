@@ -39,6 +39,7 @@ Auto-Workflow-Test（自动化工作流测试项目）
 | 闰年判断 | 输入一个年份，输出该年是否为闰年（中文） | P0 |
 | 两数相加 | 输入两个整数，输出它们的和 | P0 |
 | Hello World | 输出 "Hello World" 字符串 | P0 |
+| 输出"我爱妈妈" | 输出 "我爱妈妈" 字符串 | P0 |
 | 两数相乘 | 输入两个整数，输出它们的乘积 | P0 |
 | Dev-C++ 5.11 中文乱码修复 | 所有 .cpp 源文件转换为 GBK 编码，兼容 Dev-C++ 5.11 编辑器 | P0 |
 
@@ -54,6 +55,11 @@ Auto-Workflow-Test（自动化工作流测试项目）
 **Hello World：**
 ```
 用户启动程序 → 输出 "Hello World"
+```
+
+**输出"我爱妈妈"：**
+```
+用户启动程序 → 输出 "我爱妈妈"
 ```
 
 **两数相加：**
@@ -95,6 +101,7 @@ Auto-Workflow-Test（自动化工作流测试项目）
 ├── leap_year.cpp         # 闰年判断程序
 ├── add.cpp               # 两数相加程序
 ├── hello.cpp             # Hello World 程序
+├── love_mom.cpp          # 输出"我爱妈妈"程序
 ├── mul.cpp               # 两数相乘程序
 ├── .github/
 │   └── workflows/
@@ -134,6 +141,10 @@ Auto-Workflow-Test（自动化工作流测试项目）
 
 **hello.cpp** — Hello World：
 1. 输出字符串 `Hello World`
+2. 程序结束
+
+**love_mom.cpp** — 输出"我爱妈妈"：
+1. 输出字符串 `我爱妈妈`
 2. 程序结束
 
 **mul.cpp** — 两数相乘：
@@ -185,6 +196,9 @@ g++ add.cpp -o add && ./add
 
 # Hello World
 g++ hello.cpp -o hello && ./hello
+
+# 输出"我爱妈妈"
+g++ love_mom.cpp -o love_mom && ./love_mom
 
 # 两数相乘
 g++ mul.cpp -o mul && ./mul
@@ -258,3 +272,4 @@ g++ mul.cpp -o mul && ./mul
 | 2026-05-08 | v1.6 | 新增两数相乘程序（mul.cpp） |
 | 2026-05-08 | v1.7 | Claude Code Loop 实现（2 分钟轮询 newquest.md，自动处理需求） |
 | 2026-05-08 | v1.8 | 删除 test.cpp（奇偶数判断程序）|
+| 2026-05-08 | v1.9 | 新增 love_mom.cpp（输出"我爱妈妈"）|
