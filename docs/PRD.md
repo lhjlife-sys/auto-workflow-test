@@ -20,7 +20,7 @@ Auto-Workflow-Test（自动化工作流测试项目）
 - 建立规范的 Git 工作流和项目结构
 - 集成 GitHub Actions CI 自动化编译与测试
 - 集成 GitHub Issue 驱动的需求自动录入流程
-- 集成 Claude Code 自动轮询实现（loop 每 15 分钟检查 newquest.md）
+- 集成 Claude Code 自动轮询实现（loop 每 2 分钟检查 newquest.md）
 - 集成 Claude Code 辅助开发配置（hooks 自动编译验证）
 
 ### 2.2 扩展目标
@@ -36,7 +36,6 @@ Auto-Workflow-Test（自动化工作流测试项目）
 
 | 功能 | 描述 | 优先级 |
 |------|------|--------|
-| 奇偶数判断 | 输入一个整数，输出该数是奇数还是偶数（中文） | P0 |
 | 闰年判断 | 输入一个年份，输出该年是否为闰年（中文） | P0 |
 | 两数相加 | 输入两个整数，输出它们的和 | P0 |
 | Hello World | 输出 "Hello World" 字符串 | P0 |
@@ -44,13 +43,6 @@ Auto-Workflow-Test（自动化工作流测试项目）
 | Dev-C++ 5.11 中文乱码修复 | 所有 .cpp 源文件转换为 GBK 编码，兼容 Dev-C++ 5.11 编辑器 | P0 |
 
 ### 3.2 已实现功能交互流程
-
-**奇偶数判断：**
-```
-用户启动程序 → 提示"请输入一个整数:" → 用户输入数字
-  → 偶数分支：输出 "{数字} 是偶数"
-  → 奇数分支：输出 "{数字} 是奇数"
-```
 
 **闰年判断：**
 ```
@@ -100,7 +92,6 @@ Auto-Workflow-Test（自动化工作流测试项目）
 
 ```
 /
-├── test.cpp              # 奇偶数判断程序
 ├── leap_year.cpp         # 闰年判断程序
 ├── add.cpp               # 两数相加程序
 ├── hello.cpp             # Hello World 程序
@@ -126,13 +117,6 @@ Auto-Workflow-Test（自动化工作流测试项目）
 - **辅助工具**: Claude Code（权限配置、开发辅助）
 
 ### 5.3 核心代码说明
-
-**test.cpp** — 奇偶数判断：
-1. 声明整型变量 `num`
-2. 输出提示信息 `请输入一个整数:`
-3. 从标准输入读取整数
-4. 通过 `num % 2` 判断奇偶性
-5. 输出中文结果
 
 **leap_year.cpp** — 闰年判断：
 1. 声明整型变量 `year`
@@ -167,7 +151,6 @@ Auto-Workflow-Test（自动化工作流测试项目）
 
 | 数据项 | 类型 | 所属程序 | 说明 |
 |--------|------|----------|------|
-| num | int | test.cpp | 用户输入的整数，运行时存在于栈中 |
 | year | int | leap_year.cpp | 用户输入的年份，运行时存在于栈中 |
 | num1, num2 | int | add.cpp | 用户输入的两个加数，运行时存在于栈中 |
 | sum | int | add.cpp | 两数之和，运行时存在于栈中 |
@@ -194,9 +177,6 @@ Auto-Workflow-Test（自动化工作流测试项目）
 ### 8.1 本地运行
 
 ```bash
-# 奇偶数判断
-g++ test.cpp -o test && ./test
-
 # 闰年判断
 g++ leap_year.cpp -o leap_year && ./leap_year
 
@@ -228,8 +208,8 @@ g++ mul.cpp -o mul && ./mul
 
 **② Claude Code Loop（执行层）**
 ```
-每 15 分钟检查 docs/newquest.md
-  → 有需求：创建 .cpp 文件 → 编译 → 更新 PRD.md → 清空 newquest.md
+每 2 分钟检查 docs/newquest.md
+  → 有需求：创建/编辑/删除 .cpp 文件 → 编译 → 更新 PRD.md → 清空 newquest.md
   → 无需求：等待下次检查
 ```
 
@@ -252,7 +232,7 @@ g++ mul.cpp -o mul && ./mul
 | v1.2 | 两数相加程序 | ✅ 已完成 |
 | v1.3 | Dev-C++ 5.11 中文编码兼容 | ✅ 已完成 |
 | v1.4 | Hello World 程序 | ✅ 已完成 |
-| v1.5 | Issue 驱动 + Claude Loop 自动化 | Issue 写入 newquest.md + 15 分钟轮询实现 | ✅ 已完成 |
+| v1.5 | Issue 驱动 + Claude Loop 自动化 | Issue 写入 newquest.md + 2 分钟轮询实现 | ✅ 已完成 |
 | v1.6 | 两数相乘程序 | ✅ 已完成 |
 | v1.3 | 增加输入校验 | 处理非数字输入的友好提示 |
 | v2.0 | 引入 CMake 构建系统 | 支持更复杂的项目结构 |
@@ -276,3 +256,5 @@ g++ mul.cpp -o mul && ./mul
 | 2026-05-08 | v1.4 | 新增 Hello World 程序（hello.cpp） |
 | 2026-05-08 | v1.5 | 新增 GitHub Issue 驱动工作流（issue-driver.yml）+ Claude Code Loop 15 分钟自动轮询 |
 | 2026-05-08 | v1.6 | 新增两数相乘程序（mul.cpp） |
+| 2026-05-08 | v1.7 | Claude Code Loop 实现（2 分钟轮询 newquest.md，自动处理需求） |
+| 2026-05-08 | v1.8 | 删除 test.cpp（奇偶数判断程序）|
