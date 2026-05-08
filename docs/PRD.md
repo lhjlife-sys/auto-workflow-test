@@ -40,6 +40,7 @@ Auto-Workflow-Test（自动化工作流测试项目）
 | 两数相加 | 输入两个整数，输出它们的和 | P0 |
 | Hello World | 输出 "Hello World" 字符串 | P0 |
 | 输出"我爱妈妈" | 输出 "我爱妈妈" 字符串 | P0 |
+| 输出"爱宝宝" | 输出 "爱宝宝" 字符串 | P0 |
 | 两数相乘 | 输入两个整数，输出它们的乘积 | P0 |
 | Dev-C++ 5.11 中文乱码修复 | 所有 .cpp 源文件转换为 GBK 编码，兼容 Dev-C++ 5.11 编辑器 | P0 |
 
@@ -60,6 +61,11 @@ Auto-Workflow-Test（自动化工作流测试项目）
 **输出"我爱妈妈"：**
 ```
 用户启动程序 → 输出 "我爱妈妈"
+```
+
+**输出"爱宝宝"：**
+```
+用户启动程序 → 输出 "爱宝宝"
 ```
 
 **两数相加：**
@@ -102,6 +108,7 @@ Auto-Workflow-Test（自动化工作流测试项目）
 ├── add.cpp               # 两数相加程序
 ├── hello.cpp             # Hello World 程序
 ├── love_mom.cpp          # 输出"我爱妈妈"程序
+├── love_baby.cpp         # 输出"爱宝宝"程序
 ├── mul.cpp               # 两数相乘程序
 ├── .github/
 │   └── workflows/
@@ -145,6 +152,10 @@ Auto-Workflow-Test（自动化工作流测试项目）
 
 **love_mom.cpp** — 输出"我爱妈妈"：
 1. 输出字符串 `我爱妈妈`
+2. 程序结束
+
+**love_baby.cpp** — 输出"爱宝宝"：
+1. 输出字符串 `爱宝宝`
 2. 程序结束
 
 **mul.cpp** — 两数相乘：
@@ -199,6 +210,9 @@ g++ hello.cpp -o hello && ./hello
 
 # 输出"我爱妈妈"
 g++ love_mom.cpp -o love_mom && ./love_mom
+
+# 输出"爱宝宝"
+g++ love_baby.cpp -o love_baby && ./love_baby
 
 # 两数相乘
 g++ mul.cpp -o mul && ./mul
@@ -274,3 +288,4 @@ g++ mul.cpp -o mul && ./mul
 | 2026-05-08 | v1.8 | 删除 test.cpp（奇偶数判断程序）|
 | 2026-05-08 | v1.9 | 新增 love_mom.cpp（输出"我爱妈妈"）|
 | 2026-05-08 | v1.10 | love_mom.cpp GBK 编码修复（UTF-8 转 GBK，兼容 Dev-C++ 5.11）|
+| 2026-05-08 | v1.11 | 新增 love_baby.cpp（输出"爱宝宝"）|
