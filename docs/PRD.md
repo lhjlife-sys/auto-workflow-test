@@ -273,3 +273,4 @@ g++ mul.cpp -o mul && ./mul
 | 2026-05-08 | v1.7 | Claude Code Loop 实现（2 分钟轮询 newquest.md，自动处理需求） |
 | 2026-05-08 | v1.8 | 删除 test.cpp（奇偶数判断程序）|
 | 2026-05-08 | v1.9 | 新增 love_mom.cpp（输出"我爱妈妈"）|
+| 2026-05-08 | v1.10 | love_mom.cpp GBK 编码修复（UTF-8 转 GBK，兼容 Dev-C++ 5.11）|
